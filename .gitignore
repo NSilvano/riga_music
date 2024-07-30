@@ -41,3 +41,16 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# firebase options
+/lib/firebase_options.dart
+
+# config files
+**/android/app/google-services.json
+**/firebase.json
+**/ios/Runner/GoogleService-Info.plist
+**/macos/Runner/GoogleService-Info.plist
+**/android/app/build.gradle
+**/android/settings.gradle
+**/ios/Runner.xcodeproj/project.pbxproj
+**/macos/Runner.xcodeproj/project.pbxproj
