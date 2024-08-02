@@ -9,10 +9,10 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_mappr_annotation/auto_mappr_annotation.dart' as _i1;
 
-import '../dto/userDto/user_details_dto.dart' as _i2;
-import '../general/user/user_details.dart' as _i3;
+import '../../dto/user_details/user_details_dto.dart' as _i2;
+import '../../general/user/user_details.dart' as _i3;
 
-/// {@template package:models/src/mappers/user_details_mapper.dart}
+/// {@template package:models/src/mappers/user_details_mapper/user_details_mapper.dart}
 /// Available mappings:
 /// - `UserDetailsDTO` → `UserDetails`.
 /// - `UserDetails` → `UserDetailsDTO`.
@@ -25,7 +25,7 @@ class $Mappr implements _i1.AutoMapprInterface {
   List<_i1.AutoMapprInterface> get _delegates => const [];
 
   /// {@macro AutoMapprInterface:canConvert}
-  /// {@macro package:models/src/mappers/user_details_mapper.dart}
+  /// {@macro package:models/src/mappers/user_details_mapper/user_details_mapper.dart}
   @override
   bool canConvert<SOURCE, TARGET>({bool recursive = true}) {
     final sourceTypeOf = _typeOf<SOURCE>();
@@ -53,7 +53,7 @@ class $Mappr implements _i1.AutoMapprInterface {
   }
 
   /// {@macro AutoMapprInterface:convert}
-  /// {@macro package:models/src/mappers/user_details_mapper.dart}
+  /// {@macro package:models/src/mappers/user_details_mapper/user_details_mapper.dart}
   @override
   TARGET convert<SOURCE, TARGET>(SOURCE? model) {
     if (canConvert<SOURCE, TARGET>(recursive: false)) {
@@ -69,7 +69,7 @@ class $Mappr implements _i1.AutoMapprInterface {
   }
 
   /// {@macro AutoMapprInterface:tryConvert}
-  /// {@macro package:models/src/mappers/user_details_mapper.dart}
+  /// {@macro package:models/src/mappers/user_details_mapper/user_details_mapper.dart}
   @override
   TARGET? tryConvert<SOURCE, TARGET>(
     SOURCE? model, {
@@ -95,7 +95,7 @@ class $Mappr implements _i1.AutoMapprInterface {
   }
 
   /// {@macro AutoMapprInterface:convertIterable}
-  /// {@macro package:models/src/mappers/user_details_mapper.dart}
+  /// {@macro package:models/src/mappers/user_details_mapper/user_details_mapper.dart}
   @override
   Iterable<TARGET> convertIterable<SOURCE, TARGET>(Iterable<SOURCE?> model) {
     if (canConvert<SOURCE, TARGET>(recursive: false)) {
@@ -114,7 +114,7 @@ class $Mappr implements _i1.AutoMapprInterface {
   ///
   /// When an item in the source iterable is null, uses `whenSourceIsNull` if defined or null
   ///
-  /// {@macro package:models/src/mappers/user_details_mapper.dart}
+  /// {@macro package:models/src/mappers/user_details_mapper/user_details_mapper.dart}
   @override
   Iterable<TARGET?> tryConvertIterable<SOURCE, TARGET>(
     Iterable<SOURCE?> model, {
@@ -138,7 +138,7 @@ class $Mappr implements _i1.AutoMapprInterface {
   }
 
   /// {@macro AutoMapprInterface:convertList}
-  /// {@macro package:models/src/mappers/user_details_mapper.dart}
+  /// {@macro package:models/src/mappers/user_details_mapper/user_details_mapper.dart}
   @override
   List<TARGET> convertList<SOURCE, TARGET>(Iterable<SOURCE?> model) {
     if (canConvert<SOURCE, TARGET>(recursive: false)) {
@@ -157,7 +157,7 @@ class $Mappr implements _i1.AutoMapprInterface {
   ///
   /// When an item in the source iterable is null, uses `whenSourceIsNull` if defined or null
   ///
-  /// {@macro package:models/src/mappers/user_details_mapper.dart}
+  /// {@macro package:models/src/mappers/user_details_mapper/user_details_mapper.dart}
   @override
   List<TARGET?> tryConvertList<SOURCE, TARGET>(
     Iterable<SOURCE?> model, {
@@ -183,7 +183,7 @@ class $Mappr implements _i1.AutoMapprInterface {
   }
 
   /// {@macro AutoMapprInterface:convertSet}
-  /// {@macro package:models/src/mappers/user_details_mapper.dart}
+  /// {@macro package:models/src/mappers/user_details_mapper/user_details_mapper.dart}
   @override
   Set<TARGET> convertSet<SOURCE, TARGET>(Iterable<SOURCE?> model) {
     if (canConvert<SOURCE, TARGET>(recursive: false)) {
@@ -202,7 +202,7 @@ class $Mappr implements _i1.AutoMapprInterface {
   ///
   /// When an item in the source iterable is null, uses `whenSourceIsNull` if defined or null
   ///
-  /// {@macro package:models/src/mappers/user_details_mapper.dart}
+  /// {@macro package:models/src/mappers/user_details_mapper/user_details_mapper.dart}
   @override
   Set<TARGET?> tryConvertSet<SOURCE, TARGET>(
     Iterable<SOURCE?> model, {
@@ -279,7 +279,7 @@ class $Mappr implements _i1.AutoMapprInterface {
   }
 
   /// {@macro AutoMapprInterface:useSafeMapping}
-  /// {@macro package:models/src/mappers/user_details_mapper.dart}
+  /// {@macro package:models/src/mappers/user_details_mapper/user_details_mapper.dart}
   @override
   bool useSafeMapping<SOURCE, TARGET>() {
     return false;
