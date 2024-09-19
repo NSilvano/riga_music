@@ -26,9 +26,8 @@ class CustomTextFormField extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         labelText: label,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-        filled: true,
-        fillColor: Colors.grey[200],
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+        filled: false,
       ),
       obscureText: obscureText,
       keyboardType: keyboardType,

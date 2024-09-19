@@ -13,10 +13,9 @@ class CustomButton extends StatelessWidget {
     Key? key,
     required this.text,
     required this.onPressed,
-    this.backgroundColor =
-        const Color(0xFF2C2C2C), // Dark gray as default fill color
+    this.backgroundColor = const Color(0xFF2C2C2C),
     this.textColor = Colors.white,
-    this.width = 87,
+    this.width = 100,
     this.height = 40,
     this.isLoading = false,
   }) : super(key: key);
@@ -34,7 +33,7 @@ class CustomButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
-          padding: EdgeInsets.zero, // Remove default padding
+          padding: EdgeInsets.zero,
         ),
         child: _buildChild(),
       ),

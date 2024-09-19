@@ -31,6 +31,8 @@ class LoginForm extends HookWidget {
       key: formKey,
       child: Column(
         children: [
+          const Text('Login to your account to start listening'),
+          const SizedBox(height: 16),
           CustomTextFormField(
             label: 'Email',
             controller: emailController,

@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'injection.config.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
@@ -16,4 +18,5 @@ void configureDependencies() => getIt.init();
 abstract class RegisterModule {
   @lazySingleton
   FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
+  FirebaseFirestore get firestore => FirebaseFirestore.instance;
 }

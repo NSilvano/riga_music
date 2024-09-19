@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:models/models.dart';
@@ -6,8 +7,9 @@ import '../interfaces/i_authentication_service.dart';
 @LazySingleton(as: IAuthenticationService)
 class AuthenticationService implements IAuthenticationService {
   final FirebaseAuth _firebaseAuth;
+  final FirebaseFirestore _firestore;
 
-  AuthenticationService(this._firebaseAuth);
+  AuthenticationService(this._firebaseAuth, this._firestore);
 
   @override
   Future<UserDetailsDTO> getUserDetails() async {
@@ -86,17 +88,47 @@ class AuthenticationService implements IAuthenticationService {
         password: password,
       );
 
-      if (username != null) {
+      if (username != null && username.isNotEmpty) {
         await userCredential.user!.updateDisplayName(username);
+        await Future.delayed(const Duration(milliseconds: 500));
+
+        await userCredential.user!.reload();
       }
 
-      return UserDetailsDTO(
+      final updatedUser = _firebaseAuth.currentUser;
+
+      if (updatedUser == null) {
+        throw const AuthenticationFailure.firebaseAuthError(
+          code: 'user-not-authenticated',
+          message: 'User was created but not authenticated',
+        );
+      }
+
+      final userDetails = UserDetailsDTO(
         uid: userCredential.user!.uid,
         email: userCredential.user!.email!,
-        userName: userCredential.user!.displayName ?? '',
+        userName: userCredential.user!.displayName ?? username ?? '',
       );
+
+      await _storeUserDetails(userDetails);
+
+      return userDetails;
     } on FirebaseAuthException catch (e) {
       throw AuthenticationFailure.fromFirebaseAuthException(e);
+    }
+  }
+
+  Future<void> _storeUserDetails(UserDetailsDTO userDetails) async {
+    try {
+      await _firestore.collection('users').doc(userDetails.uid).set({
+        'email': userDetails.email,
+        'username': userDetails.userName,
+      });
+    } catch (e) {
+      throw AuthenticationFailure.firebaseAuthError(
+        code: 'firestore-error',
+        message: 'Failed to store user details: ${e.toString()}',
+      );
     }
   }
 }

@@ -43,8 +43,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       OnRegister event, Emitter<AuthState> emit) async {
     emit(const AuthState.loading());
     try {
-      final user = await _authenticationService.loginWithEmailAndPassword(
-          email: event.email, password: event.password);
+      final user = await _authenticationService.signupWithEmailAndPassword(
+          username: event.userName,
+          email: event.email,
+          password: event.password);
       emit(AuthState.authenticated(user));
     } on AuthenticationFailure catch (failure) {
       emit(AuthState.authenticationError(failure));
