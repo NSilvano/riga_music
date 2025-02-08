@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
     return BlocProvider(
       create: (context) => authBloc,
       child: const MaterialApp(
-        home: Center(child: PlayerScreen()),
+        home: Center(child: AuthenticationScreen()),
       ),
     );
   }
