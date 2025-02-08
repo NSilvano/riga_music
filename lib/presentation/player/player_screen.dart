@@ -1,5 +1,8 @@
+import 'package:core/src/application/auth/bloc/auth_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:riga_music_app/presentation/auth/authentication_screen.dart';
 
 class PlayerScreen extends StatelessWidget {
   const PlayerScreen({super.key});
@@ -22,7 +25,14 @@ class PlayerScreen extends StatelessWidget {
             icon: SvgPicture.asset(
               'assets/images/logout_icon.svg',
             ),
-            onPressed: () {},
+            onPressed: () {
+              context.read<AuthBloc>().add(const AuthEvent.onSignOut());
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => const AuthenticationScreen(),
+                ),
+              );
+            },
           ),
         ],
       ),
