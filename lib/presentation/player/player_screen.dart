@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:riga_music_app/presentation/auth/authentication_screen.dart';
 
 class PlayerScreen extends StatelessWidget {
   const PlayerScreen({super.key});
@@ -22,7 +23,13 @@ class PlayerScreen extends StatelessWidget {
             icon: SvgPicture.asset(
               'assets/images/logout_icon.svg',
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const AuthenticationScreen(),
+                ),
+              );
+            },
           ),
         ],
       ),
