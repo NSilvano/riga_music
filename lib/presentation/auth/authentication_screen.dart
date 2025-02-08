@@ -7,6 +7,7 @@ import 'package:core/src/application/auth/bloc/auth_bloc.dart';
 import 'package:riga_music_app/presentation/auth/login_form.dart';
 import 'package:riga_music_app/presentation/auth/register_form.dart';
 import 'package:riga_music_app/presentation/auth/widgets/wlecome_to_riga_music.dart';
+import 'package:riga_music_app/presentation/player/player_screen.dart';
 
 class AuthenticationScreen extends HookWidget {
   const AuthenticationScreen({super.key});
@@ -23,11 +24,9 @@ class AuthenticationScreen extends HookWidget {
               SnackBar(content: Text(state.failure.message)),
             );
           } else if (state is Authenticated) {
-            // TODO: Navigate to home screen
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Authentication Successful!'),
-                duration: Duration(seconds: 3),
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (context) => const PlayerScreen(),
               ),
             );
           }

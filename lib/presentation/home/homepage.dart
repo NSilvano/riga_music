@@ -8,6 +8,7 @@ import 'package:core/src/services/interfaces/i_authentication_service.dart';
 import 'package:core/src/services/implementations/authentication_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:riga_music_app/presentation/player/player_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -22,7 +23,7 @@ class HomePage extends StatelessWidget {
     return BlocProvider(
       create: (context) => authBloc,
       child: const MaterialApp(
-        home: Center(child: AuthenticationScreen()),
+        home: Center(child: PlayerScreen()),
       ),
     );
   }
