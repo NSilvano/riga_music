@@ -24,8 +24,12 @@ mixin _$LoginResponse {
   String get email => throw _privateConstructorUsedError;
   String? get userName => throw _privateConstructorUsedError;
 
+  /// Serializes this LoginResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LoginResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LoginResponseCopyWith<LoginResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$LoginResponseCopyWithImpl<$Res, $Val extends LoginResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LoginResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$LoginResponseImplCopyWithImpl<$Res>
       _$LoginResponseImpl _value, $Res Function(_$LoginResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LoginResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -148,11 +156,13 @@ class _$LoginResponseImpl implements _LoginResponse {
                 other.userName == userName));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, uid, email, userName);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LoginResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LoginResponseImplCopyWith<_$LoginResponseImpl> get copyWith =>
@@ -181,8 +191,11 @@ abstract class _LoginResponse implements LoginResponse {
   String get email;
   @override
   String? get userName;
+
+  /// Create a copy of LoginResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoginResponseImplCopyWith<_$LoginResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -51,7 +51,9 @@ mixin _$AuthenticationFailure {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthenticationFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AuthenticationFailureCopyWith<AuthenticationFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -76,6 +78,8 @@ class _$AuthenticationFailureCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AuthenticationFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,6 +118,8 @@ class __$$FirebaseAuthErrorImplCopyWithImpl<$Res>
       $Res Function(_$FirebaseAuthErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthenticationFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -160,7 +166,9 @@ class _$FirebaseAuthErrorImpl implements FirebaseAuthError {
   @override
   int get hashCode => Object.hash(runtimeType, code, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthenticationFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FirebaseAuthErrorImplCopyWith<_$FirebaseAuthErrorImpl> get copyWith =>
@@ -233,8 +241,11 @@ abstract class FirebaseAuthError implements AuthenticationFailure {
   String get code;
   @override
   String get message;
+
+  /// Create a copy of AuthenticationFailure
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FirebaseAuthErrorImplCopyWith<_$FirebaseAuthErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:core/src/services/implementations/youtube_service.dart';
+import 'package:core/src/services/interfaces/i_youtube_service.dart';
 
 import 'injection.config.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,5 +20,10 @@ void configureDependencies() => getIt.init();
 abstract class RegisterModule {
   @lazySingleton
   FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
+
+  @lazySingleton
   FirebaseFirestore get firestore => FirebaseFirestore.instance;
+
+  @lazySingleton
+  IYouTubeService get youTubeService => YouTubeService();
 }
