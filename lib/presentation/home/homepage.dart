@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
         BlocProvider(create: (context) => youtubeBloc),
       ],
       child: const MaterialApp(
-        home: Center(child: PlayerScreen()),
+        home: Center(child: AuthenticationScreen()),
       ),
     );
   }

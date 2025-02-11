@@ -26,7 +26,7 @@ class VideosListDTO with _$VideosListDTO {
       );
 
   factory VideosListDTO.fromJson(Map<String, dynamic>? json) =>
-      _$VideosListDTOFromJson(json!);
+      json == null ? VideosListDTO.empty() : _$VideosListDTOFromJson(json);
 }
 
 @freezed
@@ -46,7 +46,7 @@ class ItemDTO with _$ItemDTO {
       );
 
   factory ItemDTO.fromJson(Map<String, dynamic>? json) =>
-      _$ItemDTOFromJson(json!);
+      json == null ? ItemDTO.empty() : _$ItemDTOFromJson(json);
 }
 
 @freezed
@@ -80,7 +80,7 @@ class SnippetDTO with _$SnippetDTO {
       );
 
   factory SnippetDTO.fromJson(Map<String, dynamic>? json) =>
-      _$SnippetDTOFromJson(json!);
+      json == null ? SnippetDTO.empty() : _$SnippetDTOFromJson(json);
 }
 
 @freezed
@@ -96,7 +96,7 @@ class ResourceIdDTO with _$ResourceIdDTO {
       );
 
   factory ResourceIdDTO.fromJson(Map<String, dynamic>? json) =>
-      _$ResourceIdDTOFromJson(json!);
+      json == null ? ResourceIdDTO.empty() : _$ResourceIdDTOFromJson(json);
 }
 
 @freezed
@@ -118,7 +118,7 @@ class ThumbnailsDTO with _$ThumbnailsDTO {
       );
 
   factory ThumbnailsDTO.fromJson(Map<String, dynamic>? json) =>
-      _$ThumbnailsDTOFromJson(json!);
+      json == null ? ThumbnailsDTO.empty() : _$ThumbnailsDTOFromJson(json);
 }
 
 @freezed
@@ -136,7 +136,7 @@ class DefaultDTO with _$DefaultDTO {
       );
 
   factory DefaultDTO.fromJson(Map<String, dynamic>? json) =>
-      _$DefaultDTOFromJson(json!);
+      json == null ? DefaultDTO.empty() : _$DefaultDTOFromJson(json);
 }
 
 @freezed
@@ -152,5 +152,5 @@ class PageInfoDTO with _$PageInfoDTO {
       );
 
   factory PageInfoDTO.fromJson(Map<String, dynamic>? json) =>
-      _$PageInfoDTOFromJson(json!);
+      json == null ? PageInfoDTO.empty() : _$PageInfoDTOFromJson(json);
 }

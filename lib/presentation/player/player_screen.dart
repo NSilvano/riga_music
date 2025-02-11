@@ -1,20 +1,27 @@
 // ignore_for_file: implementation_imports
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/src/application/auth/bloc/auth_bloc.dart';
 import 'package:core/src/application/youtube/youtube_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:riga_music_app/presentation/auth/authentication_screen.dart';
 
-class PlayerScreen extends StatelessWidget {
+class PlayerScreen extends HookWidget {
   const PlayerScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<YoutubeBloc>().add(const GetVideosList());
-    });
+    final scrollController = useScrollController();
+
+    useEffect(() {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        context.read<YoutubeBloc>().add(const GetVideosList());
+      });
+      return null;
+    }, []);
 
     return Scaffold(
         appBar: AppBar(
@@ -44,15 +51,55 @@ class PlayerScreen extends StatelessWidget {
             ),
           ],
         ),
-        body: BlocListener<YoutubeBloc, YoutubeState>(
-          listener: (context, state) {
-            if (state is Loaded) {
-              print('Fetched YouTube Playlist Data: ${state.videosList}');
+        body: BlocBuilder<YoutubeBloc, YoutubeState>(
+          builder: (context, state) {
+            if (state is isLoading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is isLoaded) {
+              return ListView.builder(
+                controller: scrollController,
+                itemCount: state.videosList.items.length,
+                itemBuilder: (context, index) {
+                  final videoItem = state.videosList.items[index];
+
+                  return InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Placeholder(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(16),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 100,
+                              child: CachedNetworkImage(
+                                imageUrl: videoItem.snippet.thumbnails.high.url,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 12,
+                            ),
+                            Expanded(
+                              child: Text(
+                                videoItem.snippet.title,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ));
+                },
+              );
+            } else if (state is isError) {
+              return Text(state.failure.toString());
+            } else {
+              return const Center(child: Text("No Data Available"));
             }
           },
-          child: const Center(
-            child: Placeholder(),
-          ),
         ));
   }
 }
