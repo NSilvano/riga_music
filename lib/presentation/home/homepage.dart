@@ -11,7 +11,6 @@ import 'package:core/src/services/implementations/youtube_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:core/src/application/youtube/youtube_bloc.dart';
-import 'package:riga_music_app/presentation/player/player_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
