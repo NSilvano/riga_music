@@ -7,6 +7,10 @@ import 'package:models/models.dart';
 class YouTubeService implements IYouTubeService {
   static const String _baseUrl = 'www.googleapis.com';
 
+  final String apiKey;
+
+  YouTubeService({required this.apiKey});
+
   @override
   Future<VideosListDTO> getVideosList(
       {required String playListId, String? pageToken}) async {
@@ -14,7 +18,7 @@ class YouTubeService implements IYouTubeService {
       'part': 'snippet',
       'playlistId': 'PLnSSdZz186u6suHcsqK0aRqJpwwuIqPdM',
       'pageToken': pageToken ?? '',
-      'key': 'AIzaSyB3IdjmoE9mSRszALfl20t6rdY_jc2a9dc',
+      'key': apiKey,
     };
 
     Map<String, String> headers = {
