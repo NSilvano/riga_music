@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:riga_music_app/presentation/auth/authentication_screen.dart';
+import 'package:riga_music_app/presentation/player/video_player_screen.dart';
 
 class PlayerScreen extends HookWidget {
   const PlayerScreen({super.key});
@@ -62,36 +63,49 @@ class PlayerScreen extends HookWidget {
                 itemBuilder: (context, index) {
                   final videoItem = state.videosList.items[index];
 
-                  return InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Placeholder(),
+                  return Column(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => VideoPlayerScreen(
+                                videoItem: videoItem,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(16),
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                width: 100,
+                                child: CachedNetworkImage(
+                                  imageUrl:
+                                      videoItem.snippet.thumbnails.high.url,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 12,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  videoItem.snippet.title,
+                                ),
+                              ),
+                            ],
                           ),
-                        );
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.all(16),
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: 100,
-                              child: CachedNetworkImage(
-                                imageUrl: videoItem.snippet.thumbnails.high.url,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 12,
-                            ),
-                            Expanded(
-                              child: Text(
-                                videoItem.snippet.title,
-                              ),
-                            ),
-                          ],
                         ),
-                      ));
+                      ),
+                      const Divider(
+                        color: Color(0xFF1E1E1E),
+                        thickness: 2.5,
+                        height: 1,
+                      ),
+                    ],
+                  );
                 },
               );
             } else if (state is isError) {

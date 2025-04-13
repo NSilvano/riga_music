@@ -19,6 +19,7 @@ class YouTubeService implements IYouTubeService {
       'playlistId': 'PLnSSdZz186u6suHcsqK0aRqJpwwuIqPdM',
       'pageToken': pageToken ?? '',
       'key': apiKey,
+      'maxResults': '50',
     };
 
     Map<String, String> headers = {
