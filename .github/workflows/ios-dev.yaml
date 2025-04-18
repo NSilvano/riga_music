@@ -33,6 +33,18 @@ jobs:
         run: |
           flutter pub get
 
+      - name: Auto format Dart code
+        run: dart format .
+
+      - name: Verify the format of the Dart code
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Analyze the Dart code
+        run: flutter analyze --fatal-warnings
+
+      - name: Run tests
+        run: flutter test
+
       - name: Install CocoaPods dependencies
         run: |
           cd ios
