@@ -10,7 +10,7 @@ flutter build apk --debug --build-name=1.0.0 --build-number=1
 ```
 ### iOS
 ```bash
-flutter build ipa --debug --build-name=1.0.0 --build-number=1 --no-codesign
+flutter build ios --debug --build-name=1.0.0 --build-number=1 --no-codesign
 ```
 
 ## Authors
