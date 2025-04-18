@@ -85,5 +85,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'riga-music.appspot.com',
     measurementId: 'G-10GKYL4MZL',
   );
-
 }

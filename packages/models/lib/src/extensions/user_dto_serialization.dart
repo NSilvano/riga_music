@@ -1,4 +1,3 @@
-
 // import 'package:models/src/dto/userDto/user_details_dto.dart';
 
 // part 'user_dto_serialization.g.dart';

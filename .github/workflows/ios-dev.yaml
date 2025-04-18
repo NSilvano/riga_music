@@ -1,4 +1,4 @@
-name: RigaMusic - Android Dev
+name: RigaMusic - iOS Dev
 
 on: 
   push:
@@ -10,30 +10,29 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set up JDK
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'zulu'
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
           flutter-version: 3.24.3
-      
+
       - name: Create .env file
         run: |
           echo "YOUTUBE_API_KEY=${{ secrets.YOUTUBE_API_KEY }}" >> .env
-
+      
+      - name: Decode and create GoogleService-Info.plist
+        run: |
+          echo "${{ secrets.GOOGLE_SERVICE_INFO_PLIST }}" | base64 --decode > ios/Runner/GoogleService-Info.plist
+    
       - name: Install dependencies
         run: |
           flutter pub get
-      
+
       - name: Auto format Dart code
         run: dart format .
 
@@ -43,18 +42,15 @@ jobs:
       - name: Analyze the Dart code
         run: flutter analyze --fatal-warnings
 
-      # - name: Run tests
+      #- name: Run tests
       #  run: flutter test
 
-      - name: Create google-services.json
+      - name: Install CocoaPods dependencies
         run: |
-          echo "${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}" | base64 --decode > android/app/google-services.json
-      
-      - name: Build APK
-        run: flutter build apk --debug --build-name=1.0.0 --build-number=1
+          cd ios
+          pod install
+          cd ..
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: app-debug.apk
-          path: build/app/outputs/flutter-apk/app-debug.apk
+      - name: Build iOS app (Debug)
+        run: |
+            flutter build ios --debug --build-name=1.0.0 --build-number=1 --no-codesign
