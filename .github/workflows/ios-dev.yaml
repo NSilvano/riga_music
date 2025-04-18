@@ -41,4 +41,4 @@ jobs:
 
       - name: Build iOS app (Debug)
         run: |
-          flutter build ios --debug --no-codesign
+            flutter build ipa --debug --build-name=1.0.0 --build-number=1 --no-codesign
