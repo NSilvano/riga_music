@@ -26,6 +26,10 @@ jobs:
           channel: 'stable'
           flutter-version: 3.24.3
       
+      - name: Create .env file
+        run: |
+          echo "YOUTUBE_API_KEY=${{ secrets.YOUTUBE_API_KEY }}" >> .env
+
       - name: Install dependencies
         run: |
           flutter pub get
