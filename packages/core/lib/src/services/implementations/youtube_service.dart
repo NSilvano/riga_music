@@ -5,11 +5,13 @@ import 'package:core/src/services/interfaces/i_youtube_service.dart';
 import 'package:models/models.dart';
 
 class YouTubeService implements IYouTubeService {
+  YouTubeService({required this.apiKey, http.Client? client})
+      : _client = client ?? http.Client();
+
   static const String _baseUrl = 'www.googleapis.com';
 
   final String apiKey;
-
-  YouTubeService({required this.apiKey});
+  final http.Client _client;
 
   @override
   Future<VideosListDTO> getVideosList(
@@ -27,7 +29,7 @@ class YouTubeService implements IYouTubeService {
     };
 
     final uri = Uri.https(_baseUrl, '/youtube/v3/playlistItems', parameters);
-    final response = await http.get(uri, headers: headers);
+    final response = await _client.get(uri, headers: headers);
 
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);

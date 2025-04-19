@@ -43,8 +43,8 @@ jobs:
       - name: Analyze the Dart code
         run: flutter analyze --fatal-warnings
 
-      # - name: Run tests
-      #  run: flutter test
+      - name: Run tests
+        run: flutter test
 
       - name: Create google-services.json
         run: |
