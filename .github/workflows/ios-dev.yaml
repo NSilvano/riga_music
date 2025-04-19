@@ -32,6 +32,12 @@ jobs:
       - name: Install dependencies
         run: |
           flutter pub get
+          cd packages/core
+          flutter pub get
+          cd ../..
+          cd packages/models
+          flutter pub get
+          cd ../..
 
       - name: Auto format Dart code
         run: dart format .
@@ -39,11 +45,12 @@ jobs:
       - name: Verify the format of the Dart code
         run: dart format --output=none --set-exit-if-changed .
 
-      #- name: Analyze the Dart code
-      #  run: flutter analyze --fatal-warnings
+      - name: Analyze the Dart code
+        run: flutter analyze --fatal-warnings
 
       - name: Run tests
-        run: flutter test
+        run: flutter test --coverage
+        working-directory: packages/core
 
       - name: Install CocoaPods dependencies
         run: |
