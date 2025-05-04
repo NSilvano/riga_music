@@ -63,9 +63,16 @@ class PlayerScreen extends HookWidget {
                 itemBuilder: (context, index) {
                   final videoItem = state.videosList.items[index];
 
-                  return Column(
-                    children: [
-                      InkWell(
+                  return Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                    child: Card(
+                      elevation: 4,
+                      color: const Color(0xFF2C2C2C),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12)),
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(12),
                         onTap: () {
                           Navigator.push(
                             context,
@@ -76,35 +83,32 @@ class PlayerScreen extends HookWidget {
                             ),
                           );
                         },
-                        child: Container(
+                        child: Padding(
                           padding: const EdgeInsets.all(16),
                           child: Row(
                             children: [
-                              SizedBox(
-                                width: 100,
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
                                 child: CachedNetworkImage(
                                   imageUrl:
                                       videoItem.snippet.thumbnails.high.url,
+                                  width: 100,
+                                  height: 70,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
-                              const SizedBox(
-                                width: 12,
-                              ),
+                              const SizedBox(width: 12),
                               Expanded(
                                 child: Text(
                                   videoItem.snippet.title,
+                                  style: const TextStyle(color: Colors.white),
                                 ),
                               ),
                             ],
                           ),
                         ),
                       ),
-                      const Divider(
-                        color: Color(0xFF1E1E1E),
-                        thickness: 2.5,
-                        height: 1,
-                      ),
-                    ],
+                    ),
                   );
                 },
               );
